@@ -1,0 +1,168 @@
+/* ═══════════════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE STYLES
+   ═══════════════════════════════════════════════
+
+   Breakpoints:
+   - xs: < 480px   (phone portrait)
+   - sm: < 640px   (phone landscape)
+   - md: < 768px   (tablet portrait)
+   - lg: < 1024px  (tablet landscape / small laptop)
+   ═══════════════════════════════════════════════ */
+
+/* ── Safe area support (iPhone notch/home bar) ── */
+:root {
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+}
+
+/* ── 1024px — tablet landscape ────────────────── */
+@media (max-width:1024px) {
+  .stats-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .app-main { padding: var(--s4); }
+}
+
+/* ── 768px — tablet portrait / hide desktop nav ─ */
+@media (max-width:768px) {
+  /* Show bottom nav, hide desktop top nav */
+  .header-nav { display: none !important; }
+  .header-brand-name { font-size: .95rem; }
+  .bottom-nav { display: flex !important; }
+  .app-main { padding: var(--s3); padding-bottom: calc(var(--bottom-nav-h) + var(--s3) + var(--safe-bottom)); }
+
+  /* Cards full-bleed feel */
+  .card { border-radius: var(--r-md); padding: var(--s4); }
+  .page-header h2 { font-size: 1.4rem; }
+  .page-header-row { flex-direction: column; align-items: stretch; }
+
+  /* Stats 2-col */
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--s3); }
+  .stat-card  { padding: var(--s4) var(--s3); }
+  .stat-value { font-size: 1.7rem; }
+
+  /* Patient grid 1-col */
+  .patient-grid { grid-template-columns: 1fr; }
+
+  /* Tables scroll horizontally */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  td, th { padding: 10px 10px; font-size: .82rem; }
+
+  /* Form grid 1-col on mobile */
+  .form-grid { grid-template-columns: 1fr; }
+
+  /* Modal: full bottom sheet */
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal-box {
+    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    max-height: 88vh;
+    padding-bottom: calc(var(--s5) + var(--safe-bottom));
+  }
+  .modal-footer { flex-direction: column-reverse; }
+  .modal-footer .btn { width: 100%; justify-content: center; }
+
+  /* Section tabs scroll */
+  .section-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; }
+  .section-tab  { font-size: .78rem; padding: 7px 12px; }
+
+  /* Toast above bottom nav */
+  .toast-container { bottom: calc(var(--bottom-nav-h) + 10px + var(--safe-bottom)); }
+
+  /* Doctor schedule table: show PKM on mobile */
+  .hide-mobile { display: none !important; }
+}
+
+/* ── 640px — phone landscape ──────────────────── */
+@media (max-width:640px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .page-header h2 { font-size: 1.3rem; }
+
+  /* Charts smaller on phone */
+  .chart-h-lg { height: 260px; }
+  .chart-h-md { height: 220px; }
+  .chart-h-sm { height: 180px; }
+
+  /* Auth card padding */
+  .auth-card { padding: var(--s4); }
+  .auth-brand h2 { font-size: 1.3rem; }
+  .demo-grid { grid-template-columns: repeat(3, 1fr); gap: var(--s1); }
+  .demo-btn { padding: 7px 2px; font-size: .72rem; }
+
+  /* Session cards stack better */
+  .session-card { gap: var(--s2); }
+  .session-actions { flex-wrap: wrap; gap: 4px; }
+  .session-actions .btn-sm { padding: 4px 8px; font-size: .72rem; }
+}
+
+/* ── 480px — phone portrait ───────────────────── */
+@media (max-width:480px) {
+  :root { --header-h: 56px; --bottom-nav-h: 60px; }
+
+  /* Full-width buttons in main content */
+  .app-main .btn-primary { width: 100%; }
+
+  /* 1-col stats on very small */
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--s2); }
+  .stat-icon  { font-size: 1.4rem; }
+  .stat-value { font-size: 1.4rem; }
+
+  /* Compact header */
+  .header-brand-name { display: none; }
+  .role-badge { display: none; }
+
+  /* Bottom nav labels shorter */
+  .bottom-nav-item .bn-label { font-size: .55rem; }
+  .bottom-nav-item .bn-icon  { font-size: 1.2rem; }
+
+  /* Cards full-width */
+  .card { border-radius: var(--r-sm); }
+
+  /* Charts phone-friendly */
+  .chart-h-lg { height: 220px; }
+  .chart-h-md { height: 190px; }
+
+  /* Tables: key columns only  */
+  .mobile-hide { display: none !important; }
+
+  /* Patient cards full width */
+  .patient-grid { grid-template-columns: 1fr; }
+
+  /* Two column layouts → single */
+  .two-col-grid { grid-template-columns: 1fr !important; }
+
+  /* Doctor schedule capacity heatmap */
+  .capacity-heatmap { grid-template-columns: repeat(4,1fr) !important; }
+}
+
+/* ── Touch-specific enhancements ──────────────── */
+@media (hover: none) and (pointer: coarse) {
+  /* Bigger tap targets */
+  .btn     { min-height: 44px; }
+  .btn-sm  { min-height: 36px; }
+  .nav-btn { min-height: 44px; }
+  .form-control { min-height: 48px; font-size: 16px; /* prevents zoom on iOS */ }
+  select.form-control { font-size: 16px; }
+
+  /* No hover effects on touch */
+  .patient-card:hover { transform: none; }
+  .stat-card:hover    { transform: none; }
+  .btn-green:hover:not(:disabled)   { transform: none; }
+  .btn-primary:hover:not(:disabled) { transform: none; }
+
+  /* Scroll momentum */
+  .table-wrap, .section-tabs { -webkit-overflow-scrolling: touch; }
+}
+
+/* ── Landscape phone ──────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .auth-card { max-height: 75vh; overflow-y: auto; }
+  .app-main  { padding: var(--s2) var(--s3); }
+}
+
+/* ── Print ────────────────────────────────────── */
+@media print {
+  .app-header, .bottom-nav, .header-nav,
+  .btn, .session-actions { display: none !important; }
+  .card  { box-shadow: none; border: 1px solid #ccc; }
+  body   { background: #fff; }
+}

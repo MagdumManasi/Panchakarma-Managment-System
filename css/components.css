@@ -1,0 +1,107 @@
+/* ═══════════════════════════════════════════════
+   COMPONENT STYLES
+   ═══════════════════════════════════════════════ */
+
+/* ── Verify rows (doctor verification) ──────── */
+.verify-row   { display:flex; align-items:flex-start; gap:var(--s3); padding:var(--s4) 0; border-bottom:1px solid var(--border); }
+.verify-row:last-child { border-bottom:none; }
+.verify-avatar { width:46px; height:46px; border-radius:50%; background:#1565C0; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1rem; flex-shrink:0; }
+.verify-info   { flex:1; min-width:0; }
+.verify-name   { font-weight:700; font-size:.95rem; }
+.verify-meta   { font-size:.78rem; color:var(--text-light); margin-top:2px; }
+.verify-tags   { display:flex; gap:5px; flex-wrap:wrap; margin-top:6px; }
+.verify-tag    { font-size:.72rem; padding:2px 8px; border-radius:var(--r-full); background:var(--bg); color:var(--text-med); font-weight:600; }
+.verify-actions{ display:flex; gap:var(--s1); flex-wrap:wrap; flex-shrink:0; }
+
+/* ── Milestone timeline ──────────────────────── */
+.milestone-list { padding:var(--s2) 0; }
+.milestone-item { display:flex; gap:var(--s3); margin-bottom:var(--s4); position:relative; }
+.milestone-item::before { content:''; position:absolute; left:15px; top:32px; bottom:-16px; width:2px; background:var(--border); }
+.milestone-item:last-child::before { display:none; }
+.milestone-dot {
+  width:32px; height:32px; border-radius:50%; flex-shrink:0; z-index:1;
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem;
+  background:var(--border); color:var(--text-light); border:2px solid #fff;
+}
+.milestone-dot.done   { background:var(--primary); color:#fff; border-color:var(--primary-pale); }
+.milestone-dot.active { background:var(--warning); color:var(--text); border-color:var(--accent-light); animation:pulse 2s ease-in-out infinite; }
+.milestone-content { flex:1; padding-top:4px; }
+.milestone-name   { font-weight:700; font-size:.9rem; margin-bottom:6px; }
+.milestone-date   { font-size:.75rem; color:var(--text-light); }
+
+/* ── Profile card ────────────────────────────── */
+.profile-hero {
+  background:linear-gradient(135deg,var(--primary),var(--primary-mid));
+  border-radius:var(--r-lg); padding:var(--s5);
+  color:#fff; margin-bottom:var(--s4);
+  display:flex; align-items:center; gap:var(--s4);
+}
+.profile-hero-avatar {
+  width:72px; height:72px; border-radius:50%;
+  background:rgba(255,255,255,.2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.8rem; font-weight:700; flex-shrink:0;
+  border:3px solid rgba(255,255,255,.3);
+}
+.profile-hero-name { font-family:var(--font-serif); font-size:1.4rem; font-weight:700; }
+.profile-hero-role { font-size:.8rem; opacity:.8; text-transform:uppercase; letter-spacing:1px; margin-top:3px; }
+
+/* ── Announcement banner ─────────────────────── */
+.ann-banner {
+  background:linear-gradient(135deg,#e8f5e9,var(--primary-pale));
+  border:1px solid #a5d6a7; border-left:4px solid var(--primary);
+  border-radius:var(--r-md); padding:14px var(--s4); margin-bottom:var(--s4);
+  display:flex; align-items:flex-start; gap:var(--s3); cursor:pointer; transition:var(--t-fast);
+}
+.ann-banner:hover { transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+
+/* ── Shop product card ───────────────────────── */
+.product-card {
+  background:#fff; border-radius:var(--r-lg); padding:var(--s4);
+  box-shadow:var(--shadow-sm); transition:var(--t-fast);
+  display:flex; flex-direction:column; gap:var(--s2);
+  border:2px solid transparent;
+}
+.product-card:hover { border-color:var(--primary-pale); transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.product-emoji { font-size:2.2rem; }
+.product-name  { font-weight:700; font-size:.92rem; }
+.product-price { font-family:var(--font-serif); font-size:1.1rem; font-weight:700; color:var(--primary); }
+.product-mrp   { font-size:.78rem; color:var(--text-light); text-decoration:line-through; }
+.product-grid  { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:var(--s4); }
+
+/* ── Cart bar ────────────────────────────────── */
+.cart-bar {
+  position:fixed; bottom:calc(var(--bottom-nav-h) + var(--s2)); left:50%;
+  transform:translateX(-50%); z-index:200;
+  background:var(--primary); color:#fff; border-radius:var(--r-full);
+  padding:14px 24px; display:flex; align-items:center; gap:var(--s3);
+  box-shadow:0 8px 28px rgba(45,80,22,.4); font-weight:600;
+  cursor:pointer; white-space:nowrap; max-width:calc(100vw - 32px);
+  animation:slideUp .3s ease;
+}
+.cart-bar:hover { background:var(--primary-mid); }
+
+/* ── Capacity heatmap ────────────────────────── */
+.capacity-heatmap {
+  display:grid; grid-template-columns:repeat(7,1fr); gap:var(--s2);
+}
+.cap-day {
+  text-align:center; padding:10px var(--s1);
+  border-radius:var(--r-md); border:2px solid var(--border);
+  cursor:pointer; transition:var(--t-fast); background:#fff;
+}
+.cap-day.today  { border-color:var(--primary); background:var(--primary-pale); }
+.cap-day:hover  { border-color:var(--primary); }
+.cap-day-name   { font-size:.68rem; font-weight:700; color:var(--text-light); text-transform:uppercase; }
+.cap-day-num    { font-family:var(--font-serif); font-size:1.2rem; font-weight:700; color:var(--text); margin:3px 0; }
+.cap-day-bar    { height:4px; background:var(--border); border-radius:2px; overflow:hidden; margin-bottom:3px; }
+.cap-day-bar-fill { height:100%; border-radius:2px; transition:width .4s; }
+.cap-day-count  { font-size:.65rem; font-weight:600; }
+
+/* ── Prescription view ───────────────────────── */
+.rx-medicine-chip {
+  display:inline-flex; align-items:center; gap:5px;
+  background:var(--primary-pale); color:var(--primary);
+  padding:4px 10px; border-radius:var(--r-full);
+  font-size:.78rem; font-weight:600; margin:2px;
+}

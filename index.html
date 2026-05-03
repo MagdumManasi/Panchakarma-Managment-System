@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#2D5016">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Panchakarma — Ayurvedic Healthcare Platform</title>
+
+<!-- CSS: load order matters -->
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/mobile.css">
+
+<!-- Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+
+<!-- Core JS (load order: data → utils → core → components) -->
+<script src="js/core/db.js"       defer></script>
+<script src="js/core/constants.js" defer></script>
+<script src="js/utils/helpers.js"  defer></script>
+<script src="js/utils/charts.js"   defer></script>
+<script src="js/core/session.js"   defer></script>
+<script src="js/utils/toast.js"    defer></script>
+<script src="js/core/router.js"    defer></script>
+<script src="js/core/app.js"       defer></script>
+
+<!-- Auth components -->
+<script src="js/components/auth/signin.js"            defer></script>
+<script src="js/components/auth/signup.js"            defer></script>
+<script src="js/components/auth/pending.js"           defer></script>
+
+<!-- Shared components -->
+<script src="js/components/shared/modal.js"           defer></script>
+<script src="js/components/shared/header.js"          defer></script>
+<script src="js/components/shared/bottomnav.js"       defer></script>
+<script src="js/components/shared/notifications.js"   defer></script>
+<script src="js/components/shared/profile.js"         defer></script>
+<script src="js/components/shared/settings.js"        defer></script>
+
+<!-- Patient components -->
+<script src="js/components/patient/dashboard.js"      defer></script>
+<script src="js/components/patient/schedule.js"       defer></script>
+<script src="js/components/patient/booking.js"        defer></script>
+<script src="js/components/patient/progress.js"       defer></script>
+<script src="js/components/patient/feedback.js"       defer></script>
+<script src="js/components/patient/shop.js"           defer></script>
+
+<!-- Doctor components -->
+<script src="js/components/doctor/dashboard.js"       defer></script>
+<script src="js/components/doctor/patients.js"        defer></script>
+<script src="js/components/doctor/schedule.js"        defer></script>
+<script src="js/components/doctor/treatments.js"      defer></script>
+<script src="js/components/doctor/reports.js"         defer></script>
+<script src="js/components/doctor/shop.js"            defer></script>
+
+<!-- Admin components -->
+<script src="js/components/admin/dashboard.js"        defer></script>
+<script src="js/components/admin/users.js"            defer></script>
+<script src="js/components/admin/appointments.js"     defer></script>
+<script src="js/components/admin/therapies.js"        defer></script>
+<script src="js/components/admin/reports.js"          defer></script>
+<script src="js/components/admin/announcements.js"    defer></script>
+</head>
+<body>
+
+<!-- ── SPLASH ──────────────────────────────────────────── -->
+<div id="splash">
+  <div class="splash-content">
+    <div class="splash-icon">🌿</div>
+    <div class="splash-title">Panchakarma</div>
+    <div class="splash-sub">Ayurvedic Healthcare Platform</div>
+    <div class="splash-loader"><div class="splash-loader-bar"></div></div>
+  </div>
+</div>
+
+<!-- ── AUTH PAGES ──────────────────────────────────────── -->
+<div id="login-page">
+  <div class="auth-bg-pattern"></div>
+  <div class="auth-container">
+    <div class="auth-mode-switch">
+      <button class="auth-mode-btn active" id="btn-signin" onclick="App.showAuthMode('signin')">Sign In</button>
+      <button class="auth-mode-btn" id="btn-signup" onclick="App.showAuthMode('signup')">Register</button>
+    </div>
+    <div id="auth-card-area"></div>
+  </div>
+</div>
+
+<!-- ── PENDING VERIFICATION ─────────────────────────────── -->
+<div id="pending-page"></div>
+
+<!-- ── MAIN APP ──────────────────────────────────────────── -->
+<div id="app">
+
+  <!-- Top Header -->
+  <header class="app-header" id="app-header"></header>
+
+  <!-- Main content area -->
+  <main class="app-main" id="app-main">
+    <div id="page-content"></div>
+  </main>
+
+  <!-- Bottom Nav (mobile) -->
+  <nav class="bottom-nav" id="bottom-nav"></nav>
+
+</div>
+
+<!-- ── MODAL OVERLAY ─────────────────────────────────────── -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box" id="modal-box"></div>
+</div>
+
+<!-- ── TOAST CONTAINER ───────────────────────────────────── -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ── SESSION TIMEOUT WARNING ───────────────────────────── -->
+<div id="session-warning" style="display:none"></div>
+
+</body>
+</html>
