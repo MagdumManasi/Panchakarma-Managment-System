@@ -7,7 +7,7 @@ A web-based Panchakarma Management System developed to manage Ayurvedic clinic o
 - Digitize patient and treatment records  
 - Simplify appointment scheduling  
 - Improve clinic workflow efficiency  
-- Maintain accurate billing records  
+- Maintain accurate billing records.  
 
 ## 🚀 Features
 - Patient Registration & Management  
